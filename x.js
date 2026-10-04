@@ -12225,7 +12225,7 @@
         imdb: true,
       }];
       var obj_filter_sources = all_sources.filter(function (s) {
-        return !s.disabled;
+        return s.disabled !== true;
       });
       var filter_sources = obj_filter_sources.map(function (s) {
         return s.name;
@@ -12329,7 +12329,7 @@
           if (preferably === '1080p') preferably = '1080p Ultra';
         }
 
-        var items = ['2160p', '1440p', '1080p Ultra', '1080p', '720p', '480p', '360p', '240p', '144p'].map(function (quality, i) {
+        var items = ['4320p', '2160p', '4K', '1440p', '2K', '1080p Ultra', '1080p', '720p', '480p', '360p', '240p', '144p'].map(function (quality, i) {
           return {
             title: quality,
             selected: quality === preferably,
@@ -13080,7 +13080,7 @@
             if (preferably === '1080p') preferably = '1080p Ultra';
           }
 
-          var items = ['2160p', '2160', '4K', '1440p', '1440', '2K', '1080p Ultra', '1080p', '1080', '720p', '720', '480p', '480', '360p', '360', '240p', '240'];
+          var items = ['4320p', '4320', '8K', '2160p', '2160', '4K', '1440p', '1440', '2K', '1080p Ultra', '1080p', '1080', '720p', '720', '480p', '480', '360p', '360', '240p', '240', '144p', '144'];
           var idx = items.indexOf(preferably);
 
           if (idx !== -1) {
@@ -13456,7 +13456,7 @@
       };
     }
 
-    var mod_version = '20.09.2026';
+    var mod_version = '20.10.2026';
     var isMSX = !!(window.TVXHost || window.TVXManager);
     var isTizen = navigator.userAgent.toLowerCase().indexOf('tizen') !== -1;
     var isIFrame = window.parent !== window;
@@ -14921,7 +14921,6 @@
     }
 
     function startPlugin() {
-      if (Utils.isDebug3()) return;
       logApp();
       initStorage();
       initLang();
